@@ -33,7 +33,9 @@ class AccountController extends AppController{
                 'Account.id' => $this->Session->read('Auth.Account.id')
             ),
             'contain' => array(
-                'Character'
+                'Character' => array(
+                    'Planet'
+                )
             )
         ));
 

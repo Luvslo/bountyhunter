@@ -11,7 +11,12 @@
  * @author obentvelzen
  */
 class Planet extends AppModel{
-    //put your code here
+    public $belongsTo = array(
+        'Character' => array(
+           'className' => 'Account',
+           'foreignKey' => 'planet_id'
+       )
+    );
 }
 
 ?>
