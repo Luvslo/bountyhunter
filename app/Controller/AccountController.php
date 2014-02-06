@@ -19,7 +19,7 @@ class AccountController extends AppController{
 
     public function index(){
         if ($this->request->is('post')) {
-            if ($this->Auth->login($this->data)){
+            if ($this->Auth->login()){
                 //put the Account in the session
                 return $this->redirect($this->Auth->redirect());
             }
@@ -30,14 +30,18 @@ class AccountController extends AppController{
     public function dashboard(){
         $account = $this->Account->find('first', array(
             'conditions' => array(
-                'Account.id' => $this->Session->read('Account.id')
+                'Account.id' => $this->Session->read('Auth.Account.id')
             ),
             'contain' => array(
                 'Character'
             )
         ));
 
-        print_r($this->Session->read());
+        if(empty($account['Character']) && !isset($account['Character'])){
+
+        }
+        $this->set('characters', $account['Character']);
+        $this->set('', true);
     }
 
     public function view($id = null) {

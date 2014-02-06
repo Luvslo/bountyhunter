@@ -42,10 +42,19 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'authenticate' => array(
-                'Blowfish' => array()
+                'Blowfish' => array(),
+                'Form' => array(
+                    'userModel' => 'Account',
+                    'passwordHasher' => 'Blowfish',
+                    'fields' => array(
+                        'username' => 'email',
+                        'password' => 'password'
+                    )
+                )
             ),
             'loginRedirect' => array('controller' => 'account', 'action' => 'dashboard'),
-            'logoutRedirect' => array('controller' => 'account', 'action' => 'index')
+            'logoutRedirect' => array('controller' => 'account', 'action' => 'index'),
+            'loginAction' => array('controller' => 'account', 'action' => 'index')
         )
     );
 

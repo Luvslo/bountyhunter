@@ -11,6 +11,9 @@
  * @author obentvelzen
  */
 class Account extends AppModel{
+
+    public $useTable = 'accounts';
+
     public $hasMany = array(
         'Character' => array(
             'className' => 'Character',
